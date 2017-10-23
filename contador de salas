@@ -6,10 +6,15 @@ def listadehorarios(ArchivoEntrada):
     Archivo=open("salas.txt","r")
 #iteramos para leer las lineas del archivo
     for horarios in Archivo:
-#eliminamos las comas y los saltos de linea del archivo
+#generamos una lista separadas por las "," y eliminamos los saltos de linea del archivo
         lista=horarios.strip("\n").split(",")
-#agregamos a la listaSalas una lista que contiene la cantidad de horarios totales
-        listaSalas.append([lista[1],lista[2],lista[3],lista[4],lista[5],lista[6],lista[7]])
+#iniciamos un contador en la lista creada
+        i=1
+#iniciamos un iterador desde la posicion 1 donde se encuentran los horarios disponibles
+        while i < len(lista):
+#añadimos a la listaSalas los bloques de horarios disponibles
+            listaSalas.append([lista[i]])
+            i+=1
 #cerramos el archivo
     Archivo.close()
 #regresamos la lista salas
@@ -21,20 +26,21 @@ def contadorhorarios(Lista):
 #iteramos la lista lista dentro de la lista, a esta le sacamos el largo que nos daria la cantidad
 #de horarios de una sala, al multiplicar este largo por el largo de la lista de todas las salas
 #obtenemos la cantidad total de bloques disponibles
-        CantidadHorarios=(int(len(listadentro))*int(len(Lista)))
-    return CantidadHorarios
+        cantidadHorarios = (int(len(listadentro))*int(len(Lista)))
+
+    return cantidadHorarios
     
 
 #entrada
-ArchivoEntrada=raw_input("el texto de entrada esta definido como salas.txt")
+ArchivoEntrada=raw_input("el texto de entrada esta definido como salas.txt presione enter")
 
 #procesamiento
 Lista=listadehorarios(ArchivoEntrada)
 contador=contadorhorarios(Lista)
 
+
 #salida
 print "la cantidad de horarios disponibles es", contador
-
 
 
 

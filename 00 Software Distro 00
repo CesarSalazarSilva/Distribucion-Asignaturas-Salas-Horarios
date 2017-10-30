@@ -1,11 +1,15 @@
-#Apertura del archivo
-listaAlumnos = open("Alumnos.txt")
-#se divide las lineas del texto en partes de una lista
-lineasdealumnos= listaAlumnos.readlines()
-# Contador de alumnos totales
-cantalumnos = len(lineasdealumnos)
+print "El Nombre del predefinido para el archivo Alumnos es : ( Alumnos.txt )  "
+print "El Nombre del predefinido para el archivo Salas es : ( Asalas.txt ) "
+
+                ######      FUNCIONES      ######
+                ######      FUNCIONES      ######
+
+
+            #### MANEJO CONTADOR DE ALUMNOS ####
 
 #Funcion que cuente los alumnos por ramo
+#Entrada : El archivo de alumno que se quiere ingresar en comillas
+#Salida : Cantidad de alumnos por el ramo "X" que se esta ingresando
 def contador_dealumnosporramo(x):
     #Apertura del archivo
     listaAlumnos = open("Alumnos.txt")
@@ -30,25 +34,27 @@ def contador_dealumnosporramo(x):
             b = b+1
         a =a+1
     contador = listaderamosgrande.count(x)
-
+    listaAlumnos.close()
     return contador
+#print contador_dealumnosporramo(Archivo)
 
 #Funcion contador de elementos en una lista de otra lista **se utilizara para la funcion siguiente**
-#Entrada : elemento a contar, lista a recoorrer
-#Salida : las repeticiones del elemento en la lista
+#Entrada : Elemento a contar, lista a recoorrer
+#Salida : Las repeticiones del elemento en la lista
 def contadorespecial(elemento,listarecorrer):
     c = 0
     while c<len(listarecorrer):
         cont = listarecorrer.count(elemento)
         c =c+1
     return cont
+#print contadorespecial(P[i],Lista)
 
 #Funcion que entrega los ramos ordenados por demanda
-#Entrada : archivo de alumnos y ramos "Alumnos.txt"
-#Salida : lista de ramos ordenados por demanda
+#Entrada : Archivo de alumnos y ramos "Alumnos.txt" ingresarlo por el nombre
+#Salida : Lista de ramos ordenados por demanda
 def ramos_ordenadospordemanda(x):
     #Apertura del archivo
-    listaAlumnos = open("Alumnos.txt")
+    listaAlumnos = open(x)
     #se divide las lineas del texto en partes de una lista
     lineasdealumnos= listaAlumnos.readlines()
     #lista vacia para introducir todos los ramos del archivo en ella
@@ -80,7 +86,7 @@ def ramos_ordenadospordemanda(x):
         repeticionderamo = contadorespecial(Ramos[s],listaderamosgrande)
         l.append(repeticionderamo)
         s= s+1
-    #en una lista ponemos el ramo acompañado de su cantidad de alumnos en un
+    #en una lista ponemos el ramo acompaÃ±ado de su cantidad de alumnos en un
     #sub indice de la lista
     lblanco =[]
     m = 0
@@ -89,5 +95,139 @@ def ramos_ordenadospordemanda(x):
         m = m+1
     #ordenamos la lista de mayor a menor
     lblanco.sort(reverse = True)
+    #Ciere del archivo
+    listaAlumnos.close()
 
     return lblanco
+#print ramos_ordenadospordemanda("Alumnos.txt")
+
+
+            #### MANEJO DE BLOQUES SALAS ####
+
+#Funcion
+#Entrada : x = Archivo salas
+#Salida : Lista Salas con bloques de horarios disponibles
+def listadehorarios(x):
+    #Se abre el archivo donde se encuentran las salas con sus horarios
+    listaSalas=[]
+    Archivo = open(x,"r")
+    #iteramos para leer las lineas del archivo
+    for horarios in Archivo:
+        #generamos una lista separadas por las "," y eliminamos los saltos de linea del archivo
+        lista=horarios.strip("\n").split(",")
+        #iniciamos un contador en la lista creada
+        i=1
+        #iniciamos un iterador desde la posicion 1 donde se encuentran los horarios disponibles
+        while i < len(lista):
+            #aÃ±adimos a la listaSalas los bloques de horarios disponibles
+            listaSalas.append([lista[i]])
+            i+=1
+    #cerramos el archivo
+    Archivo.close()
+    #regresamos la lista salas
+    return listaSalas
+
+#Funcion
+#Entrada :
+#Salida :
+def contadorhorarios(Lista):
+    #iteramos la lista de horarios
+    for listadentro in Lista:
+        #iteramos la lista lista dentro de la lista, a esta le sacamos el largo que nos daria la cantidad
+        #de horarios de una sala, al multiplicar este largo por el largo de la lista de todas las salas
+        #obtenemos la cantidad total de bloques disponibles
+        cantidadHorarios = (int(len(listadentro))*int(len(Lista)))
+    return cantidadHorarios
+
+
+#Funcion : crea el largo de la lista
+#Entrada: archivosalas, cantidad de salas
+#Salida: lista  apiladas donde indice = sala , lista dentro de lista = bloque disponible
+def creacionlistaconbloquesdia(archivo,cantidadesalas) :
+        matriz = []
+        for i in range(cantidadesalas):
+            matriz.append([])
+            listasala= open(archivo)
+            #se divide las lineas del texto en partes de una lista
+            lineadesalas= listasala.readlines()
+            #sublista de bloques de horario de una sala
+            lis = lineadesalas[i]
+            #eliminamos el saltodelinea y creamos la lista con separacionde ","
+            Lgrande =lis.strip("\n").split(",")
+            #columna para el vector de sala en bloques disponibles
+            bloquedisponible = len(Lgrande)-1
+            #se agrega en el rango de bloques disponibles de la sala
+            for j in range(bloquedisponible):
+                matriz[i].append("Bloquevacio")
+
+        return matriz
+
+
+#El nombre de los archivos queda
+AAlumnos = raw_input("Ingrese el nombre del archivo Alumnos seguido de .txt : ")
+ASalas = raw_input("Ingrese el nombre del Archivo Salas seguido de .txt : ")
+#Contador de alumnos totales
+
+#Entrada
+
+listaAlumnos = open(AAlumnos)
+#Procesamiento
+#Se divide las lineas del texto en partes de una lista
+lineasdealumnos= listaAlumnos.readlines()
+# Contador de alumnos totales
+cantalumnos = len(lineasdealumnos)
+listaAlumnos.close()
+#Salida
+print "La cantidad de alumnos totales es : ", cantalumnos
+
+
+#Cantidas de bloques disponibles en Salas
+
+#Entrada
+#Archivo Salas antes pedido
+#Procesamiento
+Lista=listadehorarios(ASalas)
+contador=contadorhorarios(Lista)
+#Salida
+print "la cantidad de horarios disponibles es", contador
+
+
+
+
+                    ###### HEURISTICA 1 ######
+#Alumnos
+Alumnos = ramos_ordenadospordemanda(AAlumn)
+print "Los ramos que existen en la universidad, seguido de la cantidad de alumnos en ellos es  : ", Alumnos
+
+# Salas
+#Crear lista de Horario por un dia
+listasala= open(ASalas)
+lineadesalas= listasala.readlines()
+#contar salas disponibles
+Salasdisponibles = len(lineadesalas)
+#ingresar el nombre del archivo para utilizarlo en la funcion
+archivo = raw_input("Ingrese el nombre del archivo salas seguido de .txt : ")
+#horario indice = sala, listo dentro de lista = bloques de horarios
+ListaHorario = creacionlistaconbloquesdia(archivo,Salasdisponibles)
+
+
+# Como este horario se repite lunes, martes, miercoles, jueves, viernes, etc
+#pedimos al usuario la cantidad de dias que el quiere utilizarlo para
+#distribuir en esta lista los ramos
+cantidadedias = input("Ingrese la cantidad de dias en la semana que abre la Universidad : ")
+#Lista vacia para el Horario semanal
+LHS = []
+#Agregamos indices a la lista conforme dias disponibles en la semana tenga la universidad
+for rango in range(cantidadedias):
+    LHS.append(ListaHorario)
+print "El horario vacio de la universidad es : ", LHS
+
+#while :
+#    al.odenado=
+#    for in al.odenado:
+#        if no quedan mas ramos, horarios y/o salas :
+#            finalizar.
+
+                    ###### HEURISTICA 2 ######
+                        #### Alg.voraz ####
+

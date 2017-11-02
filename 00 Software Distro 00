@@ -1,11 +1,71 @@
-print "El Nombre del predefinido para el archivo Alumnos es : ( Alumnos.txt )  "
-print "El Nombre del predefinido para el archivo Salas es : ( Asalas.txt ) "
+print "El Nombre del predefinido para el archivo Alumnos es : ( A )  "
+print "El Nombre del predefinido para el archivo Salas es : ( S ) "
 
                 ######      FUNCIONES      ######
                 ######      FUNCIONES      ######
 
 
             #### MANEJO CONTADOR DE ALUMNOS ####
+#para aproximar al entero por arriba math.ceil
+import math
+
+#Funcion verifica que exista un 0 en la posicion si es asi aumenta en 1 el contador
+#Entrada:Lista a verificar
+#Salida: indice necesario para el proceso
+def verifico(Alummanejable):
+    i = 0
+    p = 0
+    while p > -1:
+        if Alummanejable[p][0]== 0:
+            p= p +1
+            if Alummanejable[len(Alummanejable)-1][0]==0:
+                i=-1
+                p = -3
+        elif Alummanejable[p][0] != 0:
+            i=p
+            p=-3
+    return i
+
+#Funcionintroduce el ramo en el bloque vacio
+#Entrada lista de Salas y alumnos
+#Salida lista salas con los ramos asignados
+def introducirramos(LHS,Alummanejable):
+    i = 0
+    while i < len(LHS) :
+        a = 0
+        while a < len(LHS[i]):
+
+            c = verifico(Alummanejable)
+
+            if c == -1:
+                LHS[i][a] = "BloqueVacio"
+            else:
+
+                LHS[i][a] = Alummanejable[c][1]
+                Alummanejable[c][0]=Alummanejable[c][0]-1
+
+            a = a + 1
+        i = i + 1
+    return LHS
+
+#Funcion Contador especial para asignar Ramos en salas
+#Entrada: lista a verificar
+#Salida: indice de la lista ramos a asignar en lista sala
+def verifica(lista):
+    cont = 0
+    o = 0
+    while o > -1 :
+        if lista[o][0] == 0:
+            con = con + 1
+            o = o + 1
+
+        elif lista[o][0] < len(lista):
+            cont = cont +1
+            o = -1
+        elif lista[o][0] == len(lista):
+            o = 0
+
+    return cont
 
 #Funcion que cuente los alumnos por ramo
 #Entrada : El archivo de alumno que se quiere ingresar en comillas
@@ -86,7 +146,7 @@ def ramos_ordenadospordemanda(x):
         repeticionderamo = contadorespecial(Ramos[s],listaderamosgrande)
         l.append(repeticionderamo)
         s= s+1
-    #en una lista ponemos el ramo acompaÃ±ado de su cantidad de alumnos en un
+    #en una lista ponemos el ramo acompañado de su cantidad de alumnos en un
     #sub indice de la lista
     lblanco =[]
     m = 0
@@ -119,7 +179,7 @@ def listadehorarios(x):
         i=1
         #iniciamos un iterador desde la posicion 1 donde se encuentran los horarios disponibles
         while i < len(lista):
-            #aÃ±adimos a la listaSalas los bloques de horarios disponibles
+            #añadimos a la listaSalas los bloques de horarios disponibles
             listaSalas.append([lista[i]])
             i+=1
     #cerramos el archivo
@@ -128,8 +188,8 @@ def listadehorarios(x):
     return listaSalas
 
 #Funcion
-#Entrada :
-#Salida :
+#Entrada : una lista
+#Salida : cantidad de separaciones en la lista ( cantidad de horarios)
 def contadorhorarios(Lista):
     #iteramos la lista de horarios
     for listadentro in Lista:
@@ -139,12 +199,12 @@ def contadorhorarios(Lista):
         cantidadHorarios = (int(len(listadentro))*int(len(Lista)))
     return cantidadHorarios
 
-
 #Funcion : crea el largo de la lista
 #Entrada: archivosalas, cantidad de salas
 #Salida: lista  apiladas donde indice = sala , lista dentro de lista = bloque disponible
 def creacionlistaconbloquesdia(archivo,cantidadesalas) :
         matriz = []
+
         for i in range(cantidadesalas):
             matriz.append([])
             listasala= open(archivo)
@@ -162,13 +222,16 @@ def creacionlistaconbloquesdia(archivo,cantidadesalas) :
 
         return matriz
 
+                ########## Procesamiento ##########
 
+
+                ####### Bloque Principal ########
+
+#entrada
 #El nombre de los archivos queda
-AAlumnos = raw_input("Ingrese el nombre del archivo Alumnos seguido de .txt : ")
-ASalas = raw_input("Ingrese el nombre del Archivo Salas seguido de .txt : ")
-#Contador de alumnos totales
+AAlumnos = raw_input("Ingrese el nombre del archivo Alumnos : ") + ".txt"
+ASalas = raw_input("Ingrese el nombre del Archivo Salas: ") + ".txt"
 
-#Entrada
 
 listaAlumnos = open(AAlumnos)
 #Procesamiento
@@ -178,56 +241,135 @@ lineasdealumnos= listaAlumnos.readlines()
 cantalumnos = len(lineasdealumnos)
 listaAlumnos.close()
 #Salida
-print "La cantidad de alumnos totales es : ", cantalumnos
+#print "La cantidad de alumnos totales es : ", cantalumnos
 
 
 #Cantidas de bloques disponibles en Salas
-
-#Entrada
-#Archivo Salas antes pedido
 #Procesamiento
 Lista=listadehorarios(ASalas)
 contador=contadorhorarios(Lista)
 #Salida
-print "la cantidad de horarios disponibles es", contador
+#print "la cantidad de horarios disponibles es", contador
 
 
 
 
                     ###### HEURISTICA 1 ######
-#Alumnos
-Alumnos = ramos_ordenadospordemanda(AAlumn)
-print "Los ramos que existen en la universidad, seguido de la cantidad de alumnos en ellos es  : ", Alumnos
 
-# Salas
+    ## Alumnos
+Alumnos = ramos_ordenadospordemanda(AAlumnos)
+#print "Los ramos que existen en la universidad, acompanado de su cantidad de alumnos : ", Alumnos
+
+    ## Salas
 #Crear lista de Horario por un dia
 listasala= open(ASalas)
 lineadesalas= listasala.readlines()
 #contar salas disponibles
 Salasdisponibles = len(lineadesalas)
-#ingresar el nombre del archivo para utilizarlo en la funcion
-archivo = raw_input("Ingrese el nombre del archivo salas seguido de .txt : ")
-#horario indice = sala, listo dentro de lista = bloques de horarios
-ListaHorario = creacionlistaconbloquesdia(archivo,Salasdisponibles)
-
 
 # Como este horario se repite lunes, martes, miercoles, jueves, viernes, etc
 #pedimos al usuario la cantidad de dias que el quiere utilizarlo para
 #distribuir en esta lista los ramos
 cantidadedias = input("Ingrese la cantidad de dias en la semana que abre la Universidad : ")
-#Lista vacia para el Horario semanal
-LHS = []
-#Agregamos indices a la lista conforme dias disponibles en la semana tenga la universidad
-for rango in range(cantidadedias):
-    LHS.append(ListaHorario)
-print "El horario vacio de la universidad es : ", LHS
 
-#while :
-#    al.odenado=
-#    for in al.odenado:
-#        if no quedan mas ramos, horarios y/o salas :
-#            finalizar.
+#ingresar el nombre del archivo para utilizarlo en la funcion
+#horario indice = sala, listo dentro de lista = bloques de horarios
+ListaHorario = creacionlistaconbloquesdia(ASalas,Salasdisponibles)
+
+
+L1 = ListaHorario
+L2 = ListaHorario
+L3 = ListaHorario
+L4 = ListaHorario
+L5 = ListaHorario
+L6 = ListaHorario
+L7 = ListaHorario
+
+
+AlporSalas = input("Introduzca la cantidad de alumnos que cupen en una sala : ")
+#se crea una lista con el fin de cambiar el indice en vez de alumnos a salas a solicitar
+Alummanejable = Alumnos
+#se divide la cantidad de alumnos en en ramo por la cantidad de alumnos por sala se da cuantos bloques necesita el ramo
+cont = 0
+while cont <len(Alummanejable):
+    Alummanejable[cont][0] = math.ceil(float(Alummanejable[cont][0]) /AlporSalas)
+    cont = cont + 1
+
+
+if cantidadedias == 1:
+    L1 = introducirramos(L1,Alummanejable)
+    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
+
+elif cantidadedias == 2:
+    L1 = introducirramos(L1,Alummanejable)
+    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
+    L2 = introducirramos(L2,Alummanejable)
+    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
+
+elif cantidadedias == 3:
+    L1 = introducirramos(L1,Alummanejable)
+    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
+    L2 = introducirramos(L2,Alummanejable)
+    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
+    L3 = introducirramos(L3,Alummanejable)
+    print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
+
+elif cantidadedias == 4:
+    L1 = introducirramos(L1,Alummanejable)
+    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
+    L2 = introducirramos(L2,Alummanejable)
+    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
+    L3 = introducirramos(L3,Alummanejable)
+    print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
+    L4 = introducirramos(L4,Alummanejable)
+    print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
+
+elif cantidadedias == 5:
+    L1 = introducirramos(L1,Alummanejable)
+    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
+    L2 = introducirramos(L2,Alummanejable)
+    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
+    L3 = introducirramos(L3,Alummanejable)
+    print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
+    L4 = introducirramos(L4,Alummanejable)
+    print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
+    L5 = introducirramos(L5,Alummanejable)
+    print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
+
+elif cantidadedias == 6:
+    L1 = introducirramos(L1,Alummanejable)
+    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
+    L2 = introducirramos(L2,Alummanejable)
+    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
+    L3 = introducirramos(L3,Alummanejable)
+    print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
+    L4 = introducirramos(L4,Alummanejable)
+    print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
+    L5 = introducirramos(L5,Alummanejable)
+    print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
+    L6 = introducirramos(L6,Alummanejable)
+    print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
+
+elif cantidadedias == 7:
+    L1 = introducirramos(L1,Alummanejable)
+    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
+    L2 = introducirramos(L2,Alummanejable)
+    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
+    L3 = introducirramos(L3,Alummanejable)
+    print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
+    L4 = introducirramos(L4,Alummanejable)
+    print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
+    L5 = introducirramos(L5,Alummanejable)
+    print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
+    L6 = introducirramos(L6,Alummanejable)
+    print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
+    L7 = introducirramos(L7,Alummanejable)
+    print "\n","El Horario del dia Domingo para las salas es : ", "\n",L7,"\n"
+
+elif cantidadedias <0 or cantidadedias > 7 or cantidadedias != int :
+    print "Abra Nuevamente el programa entregando la informacion correctamente"
+
+
 
                     ###### HEURISTICA 2 ######
                         #### Alg.voraz ####
-

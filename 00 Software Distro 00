@@ -146,7 +146,7 @@ def ramos_ordenadospordemanda(x):
         repeticionderamo = contadorespecial(Ramos[s],listaderamosgrande)
         l.append(repeticionderamo)
         s= s+1
-    #en una lista ponemos el ramo acompañado de su cantidad de alumnos en un
+    #en una lista ponemos el ramo acompaÃ±ado de su cantidad de alumnos en un
     #sub indice de la lista
     lblanco =[]
     m = 0
@@ -179,7 +179,7 @@ def listadehorarios(x):
         i=1
         #iniciamos un iterador desde la posicion 1 donde se encuentran los horarios disponibles
         while i < len(lista):
-            #añadimos a la listaSalas los bloques de horarios disponibles
+            #aÃ±adimos a la listaSalas los bloques de horarios disponibles
             listaSalas.append([lista[i]])
             i+=1
     #cerramos el archivo
@@ -249,7 +249,7 @@ listaAlumnos.close()
 Lista=listadehorarios(ASalas)
 contador=contadorhorarios(Lista)
 #Salida
-#print "la cantidad de horarios disponibles es", contador
+print "la cantidad de horarios disponibles es", contador,"\n"
 
 
 
@@ -258,7 +258,7 @@ contador=contadorhorarios(Lista)
 
     ## Alumnos
 Alumnos = ramos_ordenadospordemanda(AAlumnos)
-#print "Los ramos que existen en la universidad, acompanado de su cantidad de alumnos : ", Alumnos
+print "Los ramos que existen en la universidad, acompanado de su cantidad de alumnos : ", "\n",Alumnos
 
     ## Salas
 #Crear lista de Horario por un dia

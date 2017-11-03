@@ -1,5 +1,5 @@
-print "El Nombre del predefinido para el archivo Alumnos es : ( A )  "
-print "El Nombre del predefinido para el archivo Salas es : ( S ) "
+print "El Nombre del predefinido para el archivo Alumnos es : ( Alumnos )  "
+print "El Nombre del predefinido para el archivo Salas es : ( Salas ) "
 
                 ######      FUNCIONES      ######
                 ######      FUNCIONES      ######
@@ -373,3 +373,4 @@ elif cantidadedias <0 or cantidadedias > 7 or cantidadedias != int :
 
                     ###### HEURISTICA 2 ######
                         #### Alg.voraz ####
+

@@ -19,7 +19,7 @@ def verifico(Alummanejable):
         if Alummanejable[p][0]== 0:
             p= p +1
             if Alummanejable[len(Alummanejable)-1][0]==0:
-                i=-1
+                i = -1
                 p = -3
         elif Alummanejable[p][0] != 0:
             i=p
@@ -34,16 +34,12 @@ def introducirramos(LHS,Alummanejable):
     while i < len(LHS) :
         a = 0
         while a < len(LHS[i]):
-
             c = verifico(Alummanejable)
-
             if c == -1:
                 LHS[i][a] = "BloqueVacio"
-            else:
-
+            elif c != -1 :
                 LHS[i][a] = Alummanejable[c][1]
                 Alummanejable[c][0]=Alummanejable[c][0]-1
-
             a = a + 1
         i = i + 1
     return LHS
@@ -299,12 +295,14 @@ while cont <len(Alummanejable):
 if cantidadedias == 1:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
+    print Alummanejable
 
 elif cantidadedias == 2:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
     L2 = introducirramos(L2,Alummanejable)
     print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
+    print Alummanejable
 
 elif cantidadedias == 3:
     L1 = introducirramos(L1,Alummanejable)
@@ -313,7 +311,7 @@ elif cantidadedias == 3:
     print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
     L3 = introducirramos(L3,Alummanejable)
     print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
-
+    print Alummanejable
 elif cantidadedias == 4:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
@@ -323,7 +321,7 @@ elif cantidadedias == 4:
     print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
     L4 = introducirramos(L4,Alummanejable)
     print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
-
+    print Alummanejable
 elif cantidadedias == 5:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
@@ -335,7 +333,7 @@ elif cantidadedias == 5:
     print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
     L5 = introducirramos(L5,Alummanejable)
     print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
-
+    print Alummanejable
 elif cantidadedias == 6:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
@@ -349,7 +347,7 @@ elif cantidadedias == 6:
     print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
     L6 = introducirramos(L6,Alummanejable)
     print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
-
+    print Alummanejable
 elif cantidadedias == 7:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
@@ -365,7 +363,7 @@ elif cantidadedias == 7:
     print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
     L7 = introducirramos(L7,Alummanejable)
     print "\n","El Horario del dia Domingo para las salas es : ", "\n",L7,"\n"
-
+    print Alummanejable
 elif cantidadedias <0 or cantidadedias > 7 or cantidadedias != int :
     print "Abra Nuevamente el programa entregando la informacion correctamente"
 
@@ -373,4 +371,6 @@ elif cantidadedias <0 or cantidadedias > 7 or cantidadedias != int :
 
                     ###### HEURISTICA 2 ######
                         #### Alg.voraz ####
+
+
 

@@ -142,7 +142,7 @@ def ramos_ordenadospordemanda(x):
         repeticionderamo = contadorespecial(Ramos[s],listaderamosgrande)
         l.append(repeticionderamo)
         s= s+1
-    #en una lista ponemos el ramo acompaÃ±ado de su cantidad de alumnos en un
+    #en una lista ponemos el ramo acompaÃƒÂ±ado de su cantidad de alumnos en un
     #sub indice de la lista
     lblanco =[]
     m = 0
@@ -175,7 +175,7 @@ def listadehorarios(x):
         i=1
         #iniciamos un iterador desde la posicion 1 donde se encuentran los horarios disponibles
         while i < len(lista):
-            #aÃ±adimos a la listaSalas los bloques de horarios disponibles
+            #aÃƒÂ±adimos a la listaSalas los bloques de horarios disponibles
             listaSalas.append([lista[i]])
             i+=1
     #cerramos el archivo
@@ -281,8 +281,24 @@ L5 = ListaHorario
 L6 = ListaHorario
 L7 = ListaHorario
 
+# funcion que entrega los alumnos que no alcanzaron a quedar
+# Entrada:Lista bbloques de ramos que sobran
+# Salida:lista con alumnos que faltan por asignar
+def alumnosquesobran(Alummanejable,Al):
+    cont = 0
+    while cont<len(Alummanejable):
+        if Alummanejable[cont][0] == 0:
+            cont = cont +1
+        else:
+            a=(math.ceil(float(alumnos[cont][0]) /AlporSalas))-(float(alumnos[cont][0]) /AlporSalas)
+            Alummanejable[cont][0] = (Alummanejable[cont][0] - a)*AlporSalas
+            cont = cont + 1
+
+    return Alummanejable
 
 AlporSalas = input("Introduzca la cantidad de alumnos que cupen en una sala : ")
+#Se crea una lista para utilizar la funcion alumnos que sobran
+Al = Alumnos
 #se crea una lista con el fin de cambiar el indice en vez de alumnos a salas a solicitar
 Alummanejable = Alumnos
 #se divide la cantidad de alumnos en en ramo por la cantidad de alumnos por sala se da cuantos bloques necesita el ramo
@@ -295,14 +311,19 @@ while cont <len(Alummanejable):
 if cantidadedias == 1:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
-    print Alummanejable
+    #Alumnos que sobran
+    Alsob = alumnosquesobran(Alummanejable,Al)
+    print Alsob
 
 elif cantidadedias == 2:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
     L2 = introducirramos(L2,Alummanejable)
     print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
-    print Alummanejable
+    #Alumnos que sobran
+    Alsob = alumnosquesobran(Alummanejable,Al)
+    print Alsob
+
 
 elif cantidadedias == 3:
     L1 = introducirramos(L1,Alummanejable)
@@ -311,7 +332,10 @@ elif cantidadedias == 3:
     print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
     L3 = introducirramos(L3,Alummanejable)
     print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
-    print Alummanejable
+    #Alumnos que sobran
+    Alsob = alumnosquesobran(Alummanejable,Al)
+    print Alsob
+
 elif cantidadedias == 4:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
@@ -321,7 +345,10 @@ elif cantidadedias == 4:
     print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
     L4 = introducirramos(L4,Alummanejable)
     print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
-    print Alummanejable
+    #Alumnos que sobran
+    Alsob = alumnosquesobran(Alummanejable,Al)
+    print Alsob
+
 elif cantidadedias == 5:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
@@ -333,7 +360,10 @@ elif cantidadedias == 5:
     print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
     L5 = introducirramos(L5,Alummanejable)
     print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
-    print Alummanejable
+    #Alumnos que sobran
+    Alsob = alumnosquesobran(Alummanejable,Al)
+    print Alsob
+
 elif cantidadedias == 6:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
@@ -347,7 +377,10 @@ elif cantidadedias == 6:
     print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
     L6 = introducirramos(L6,Alummanejable)
     print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
-    print Alummanejable
+    #Alumnos que sobran
+    Alsob = alumnosquesobran(Alummanejable,Al)
+    print Alsob
+
 elif cantidadedias == 7:
     L1 = introducirramos(L1,Alummanejable)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
@@ -363,7 +396,10 @@ elif cantidadedias == 7:
     print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
     L7 = introducirramos(L7,Alummanejable)
     print "\n","El Horario del dia Domingo para las salas es : ", "\n",L7,"\n"
-    print Alummanejable
+    #Alumnos que sobran
+    Alsob = alumnosquesobran(Alummanejable,Al)
+    print Alsob
+
 elif cantidadedias <0 or cantidadedias > 7 or cantidadedias != int :
     print "Abra Nuevamente el programa entregando la informacion correctamente"
 
@@ -371,6 +407,7 @@ elif cantidadedias <0 or cantidadedias > 7 or cantidadedias != int :
 
                     ###### HEURISTICA 2 ######
                         #### Alg.voraz ####
+
 
 
 

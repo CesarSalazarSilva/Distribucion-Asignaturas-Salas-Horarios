@@ -114,8 +114,8 @@ def ramos_ordenadospordemanda(x):
 
                 #### FUNCIONES SALAS ####
 
-#Funcion
-#Entrada : x = Archivo salas
+#Funcion lista con bloques disponibles
+#Entrada : Archivo salas
 #Salida : Lista Salas con bloques de horarios disponibles
 def listadehorarios(x):
     #Se abre el archivo donde se encuentran las salas con sus horarios
@@ -138,7 +138,7 @@ def listadehorarios(x):
     return listaSalas
 ####
 
-#Funcion
+#Funcion cuenta horarios totales
 #Entrada : una lista
 #Salida : cantidad de separaciones en la lista ( cantidad de horarios)
 def contadorhorarios(Lista):
@@ -176,10 +176,23 @@ def creacionlistaconbloquesdia(archivo,cantidadesalas) :
 
                 ##### FUNCIONES VARIAS #####
 
-#para aproximar al entero por arriba math.ceil
-import math
+#Funcion verifica que exista demanda de ramos
+#Entrada: lista con alumnos
+#Salida: cantidad de bloques que se necesitan de ramos sin asignar
+def demanda(Alumnos):
+    p =0
+    B =0
+    while p<len(Alumnos[0]):
+        a = Alumnos[0][p]
+        if a > 0 :
+            B =B+a
+        p=p+1
+    return B
+####
 
 #Funcion Condicion que exista demanda
+#Entrada: lista con ramos y cantidad de salas
+#Salida: 1 si hay demanda, 0 si no hay demanda
 def peque(lista):
     peq = lista[0]
     a = peq.count(0)
@@ -191,6 +204,8 @@ def peque(lista):
 ##
 
 #Cuenta bloques vacios disponibles
+#Entrada: lista horario del dia
+#Salida: cantidad de horarios disponibles
 def horarioslibres(ListaHorario):
     a = 0
     p = 0
@@ -201,68 +216,9 @@ def horarioslibres(ListaHorario):
     return a
 ##
 
-#Entrada
-#Se solicita el nombre de los Archivos
-#AAlumnos = raw_input("Ingrese el nombre del archivo Alumnos : ") + ".txt"
-#ASalas = raw_input("Ingrese el nombre del Archivo Salas: ") + ".txt"
-AAlumnos = "Alumnos.txt"
-ASalas = "Salas.txt"
-##Alumnos
-#Se abre el archivo Alumnos
-listaAlumnos = open(AAlumnos)
-#Se divide las lineas del texto en partes de una lista
-lineasdealumnos= listaAlumnos.readlines()
-# Contador de alumnos totales
-cantalumnos = len(lineasdealumnos)
-listaAlumnos.close()
-print "La cantidad de alumnos totales es : ", cantalumnos
-##
-
-##Salas
-#Cantidas de bloques disponibles en Salas
-Lista=listadehorarios(ASalas)
-contador=contadorhorarios(Lista)
-print "La cantidad de horarios disponibles es", contador,"\n"
-##
-
-
-                    ###### HEURISTICA funciones ######
-
-## Alumnos
-Alumnos = ramos_ordenadospordemanda(AAlumnos)
-print "Los ramos que existen en la universidad, acompanado de su cantidad de alumnos : ", "\n",Alumnos, "\n"
-
-## Salas
-#Crear lista de Horario por un dia
-listasala= open(ASalas)
-lineadesalas= listasala.readlines()
-#contar salas disponibles
-Salasdisponibles = len(lineadesalas)
-##HORARIO
-#Como este horario se repite lunes, martes, miercoles, jueves, viernes, etc
-#pedimos al usuario la cantidad de dias que el quiere utilizarlo para
-#distribuir en esta lista los ramos
-cantidadedias = input("Ingrese la cantidad de dias en la semana que abre la Universidad : ")
-ListaHorario = creacionlistaconbloquesdia(ASalas,Salasdisponibles)
-
-AlporSalas= input("Digite la cantidad de alumnos que cupen en una sala : ")
-
-olumnos = Alumnos
-cont = 0
-while cont <len(olumnos[0]):
-    olumnos[0][cont] = float(Alumnos[0][cont]) /AlporSalas
-    cont = cont + 1
-print "Los ramos que existen en la universidad, acompanado de su cantidad de bloques : ", "\n",olumnos, "\n"
-def demanda(Alumnos):
-    p =0
-    B =0
-    while p<len(Alumnos[0]):
-        a = Alumnos[0][p]
-        if a > 0 :
-            B =B+a
-        p=p+1
-    return B
-
+#Funcion que introduce los ramos en bloques vacios
+#Entrada:lista horario del dia , lista ramos con bloques
+#Salida:lista horario con los ramos asignados
 def introducirramos(LHS,Alumnos):
     i = 0
     while i < len(LHS) :
@@ -271,7 +227,6 @@ def introducirramos(LHS,Alumnos):
             c = ganancia(Alumnos)
             if c == "No hay mas alumnos por asignar":
                 LHS[i][a] = "Bloquevacio"
-
             elif c == "No hay mas bloques disponibles ":
                 break
             else:
@@ -281,7 +236,10 @@ def introducirramos(LHS,Alumnos):
         i = i + 1
     return LHS
 ####
-#funcion entrega lista cn ganancia de cada ramo
+
+#Funcion entrega lista con ganancia de cada ramo
+#Entrada: lista alumnos con bloques que necesita por ramo
+#Salida: indice del ramo con la ganancia mas alta
 def ganancia(Alumnos):
     A = Alumnos
     totales = cantalumnos
@@ -301,16 +259,91 @@ def ganancia(Alumnos):
             w = escojeelmaximo(J)
     else :
         w = "No hay mas alumnos por asignar"
-
     return w
 ####
 
+#Funcion escoje el maximo
+#Entrada: lista con ganancias
+#Salida: indice del dato mas grande
 def escojeelmaximo(J):
     b= max(J)
     a = J.index(b)
     return a
 ####
 
+#Funcion que calcula los alumnos que sobran
+#Entrada Lista con bloques de ramos
+#Salida lista con alumnos de ramos
+def alumnosquesobran(Alummanejable):
+    cont = 0
+    while cont<len(Alummanejable[0]):
+            Alummanejable[0][cont] = round((Alummanejable[0][cont])*AlporSalas)
+            cont = cont + 1
+    return Alummanejable
+####
+
+    ##############  BLOQUE PRINCIPAL ##############
+    ##############  BLOQUE PRINCIPAL ##############
+
+#Alumnos
+#Se solicita el nombre de los Archivos
+#AAlumnos = raw_input("Ingrese el nombre del archivo Alumnos : ") + ".txt"
+#ASalas = raw_input("Ingrese el nombre del Archivo Salas: ") + ".txt"
+AAlumnos = "Alumnos.txt"
+ASalas = "Salas.txt"
+##Alumnos
+#Se abre el archivo Alumnos
+listaAlumnos = open(AAlumnos)
+#Se divide las lineas del texto en partes de una lista
+lineasdealumnos= listaAlumnos.readlines()
+# Contador de alumnos totales
+cantalumnos = len(lineasdealumnos)
+listaAlumnos.close()
+print "\n","La cantidad de alumnos totales es : ", cantalumnos
+##
+
+##Salas
+#Cantidas de bloques disponibles en Salas
+Lista=listadehorarios(ASalas)
+contador=contadorhorarios(Lista)
+print "\n","La cantidad de horarios disponibles es", contador,"\n"
+##
+
+## Alumnos por sala
+AlporSalas= input("Digite la cantidad de alumnos que cupen en una sala : ")
+
+                    ###### HEURISTICA con optimizacion ######
+
+                        ### ENTRADAS ###
+## Alumnos
+Alumnos = ramos_ordenadospordemanda(AAlumnos)
+print "Los ramos que existen en la universidad, acompanado de su cantidad de alumnos : ", "\n",Alumnos, "\n"
+
+## Salas
+#Crear lista de Horario por un dia
+listasala= open(ASalas)
+lineadesalas= listasala.readlines()
+#contar salas disponibles
+Salasdisponibles = len(lineadesalas)
+
+##HORARIO
+#Como este horario se repite lunes, martes, miercoles, jueves, viernes, etc
+#pedimos al usuario la cantidad de dias que el quiere utilizarlo para
+#distribuir en esta lista los ramos
+cantidadedias = input("Ingrese la cantidad de dias en la semana que abre la Universidad : ")
+ListaHorario = creacionlistaconbloquesdia(ASalas,Salasdisponibles)
+
+
+                        ### PROCESAMIENTO ###
+
+olumnos = Alumnos
+## Se procesa los alumnos que requiere cada ramo a bloques de horario que requiere cada ramo
+cont = 0
+while cont <len(olumnos[0]):
+    olumnos[0][cont] = float(Alumnos[0][cont]) /AlporSalas
+    cont = cont + 1
+
+print "Los ramos que existen en la universidad, acompanado de los bloques que necesitan : ", "\n",olumnos, "\n"
 
 #Creamos listas segun los dias de funcionamiento de la Universidad
 L1 = ListaHorario
@@ -321,14 +354,12 @@ L5 = ListaHorario
 L6 = ListaHorario
 L7 = ListaHorario
 
-        ### PROCESAMIENTO ###
-
 ## Se introducen ramos dependiendo de la cantidad de dias que hay disponibles en la universidad##
 if cantidadedias == 1:
     L1 = introducirramos(L1,olumnos)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
     #Alumnos que sobran
-    print olumnos
+    print alumnosquesobran(olumnos)
 
 elif cantidadedias == 2:
     L1 = introducirramos(L1,olumnos)
@@ -336,7 +367,7 @@ elif cantidadedias == 2:
     L2 = introducirramos(L2,olumnos)
     print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
     #Alumnos que sobran
-    print olumnos
+    print alumnosquesobran(olumnos)
 
 elif cantidadedias == 3:
     L1 = introducirramos(L1,olumnos)
@@ -346,7 +377,7 @@ elif cantidadedias == 3:
     L3 = introducirramos(L3,olumnos)
     print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
     #Alumnos que sobran
-    print olumnos
+    print alumnosquesobran(olumnos)
 
 elif cantidadedias == 4:
     L1 = introducirramos(L1,olumnos)
@@ -358,7 +389,7 @@ elif cantidadedias == 4:
     L4 = introducirramos(L4,olumnos)
     print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
     #Alumnos que sobran
-    print olumnos
+    print alumnosquesobran(olumnos)
 
 elif cantidadedias == 5:
     L1 = introducirramos(L1,olumnos)
@@ -372,7 +403,7 @@ elif cantidadedias == 5:
     L5 = introducirramos(L5,olumnos)
     print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
     #Alumnos que sobran
-    print olumnos
+    print alumnosquesobran(olumnos)
 
 elif cantidadedias == 6:
     L1 = introducirramos(L1,olumnos)
@@ -388,7 +419,7 @@ elif cantidadedias == 6:
     L6 = introducirramos(L6,olumnos)
     print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
     #Alumnos que sobran
-    print olumnos
+    print alumnosquesobran(olumnos)
 
 
 elif cantidadedias == 7:
@@ -407,7 +438,9 @@ elif cantidadedias == 7:
     L7 = introducirramos(L7,olumnos)
     print "\n","El Horario del dia Domingo para las salas es : ", "\n",L7,"\n"
     #Alumnos que sobran
-    print olumnos
+    print alumnosquesobran(olumnos)
 
 elif cantidadedias <0 or cantidadedias > 7 or cantidadedias != int :
     print "Abra Nuevamente el programa entregando la informacion correctamente"
+
+print "Si los valores son negativos es porque sobran x asientos en la asignatura

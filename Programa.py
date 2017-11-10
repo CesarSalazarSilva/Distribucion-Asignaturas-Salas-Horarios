@@ -301,9 +301,6 @@ def ganancia(Alumnos):
 
                 w= "No hay mas bloques disponibles "
                 m = m+1
-            elif Alumnos[0][m]<-1:
-                w= "No hay mas alumnos por asignar"
-                m = m+1
             else:
                 if Alumnos[0][m] < 0:
                     Alumnos[0][m] == 0

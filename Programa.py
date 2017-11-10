@@ -86,7 +86,7 @@ def ramos_ordenadospordemanda(x):
         repeticionderamo = contadorespecial(Ramos[s],listaderamosgrande)
         l.append(repeticionderamo)
         s= s+1
-    #en una lista ponemos el ramo acompaÃƒÆ’Ã‚Â±ado de su cantidad de alumnos en un
+    #en una lista ponemos el ramo acompaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±ado de su cantidad de alumnos en un
     #sub indice de la lista
     lblanco =[]
     m = 0
@@ -129,7 +129,7 @@ def listadehorarios(x):
         i=1
         #iniciamos un iterador desde la posicion 1 donde se encuentran los horarios disponibles
         while i < len(lista):
-            #aÃƒÆ’Ã‚Â±adimos a la listaSalas los bloques de horarios disponibles
+            #aÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±adimos a la listaSalas los bloques de horarios disponibles
             listaSalas.append([lista[i]])
             i+=1
     #cerramos el archivo
@@ -198,7 +198,6 @@ def horarioslibres(ListaHorario):
         b = ListaHorario[p].count("Bloquevacio")
         a = a+b
         p= p+1
-        a
     return a
 ##
 
@@ -227,7 +226,7 @@ print "La cantidad de horarios disponibles es", contador,"\n"
 ##
 
 
-                    ###### HEURISTICA 1 ######
+                    ###### HEURISTICA funciones ######
 
 ## Alumnos
 Alumnos = ramos_ordenadospordemanda(AAlumnos)
@@ -259,7 +258,8 @@ def demanda(Alumnos):
     B =0
     while p<len(Alumnos[0]):
         a = Alumnos[0][p]
-        B = B+a
+        if a > 0 :
+            B =B+a
         p=p+1
     return B
 
@@ -290,25 +290,17 @@ def ganancia(Alumnos):
         m = 0
         L= Alumnos[0]
         J= []
-        while m < len(L):
-            if cantalumnos <=0:
-                w= "No hay mas alumnos por asignar"
-                m = m+1
-            elif demanda(Alumnos) <= 0:
-                w= "No hay mas alumnos por asignar"
-                m = m+1
-            elif contador <= 0:
-
-                w= "No hay mas bloques disponibles "
-                m = m+1
-            else:
-                if Alumnos[0][m] < 0:
-                    Alumnos[0][m] == 0
-
+        if demanda(Alumnos) == 0:
+            w= "No hay mas alumnos por asignar"
+            m = m+1
+        else:
+            while m < len(L):
                 a = (float(Alumnos[0][m])/cantalumnos)+(float(Alumnos[0][m])/demanda(Alumnos))+(float(horarioslibres(ListaHorario))/contador)
                 J.append(a)
                 m = m +1
-                w = escojeelmaximo(J)
+            w = escojeelmaximo(J)
+    else :
+        w = "No hay mas alumnos por asignar"
 
     return w
 ####
@@ -419,4 +411,3 @@ elif cantidadedias == 7:
 
 elif cantidadedias <0 or cantidadedias > 7 or cantidadedias != int :
     print "Abra Nuevamente el programa entregando la informacion correctamente"
-####

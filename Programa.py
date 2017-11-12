@@ -1,18 +1,19 @@
-print "El Nombre del predefinido para el archivo Alumnos es : ( Alumnos )  "
-print "El Nombre del predefinido para el archivo Salas es : ( Salas ) "
+# -*- coding: cp1252 -*-
+# Distribucion de Horarios y Salas segun Demanda
+#(Cesar Salazar - Benjamin Alcarruz- Penaa, 0.1, 11-11-2017)
 
-                ######      FUNCIONES      ######
-                ######      FUNCIONES      ######
+                ######      DEFINICION DE FUNCIONES      ######
+                ######      DEFINICION DE FUNCIONES      ######
 
-
-            #### FUNCIONES ALUMNOS ####
-
+###############################################################################
+#### FUNCIONES ALUMNOS ####
+###############################################################################
 #Funcion que cuente los alumnos por ramo
 #Entrada : El archivo de alumno que se quiere ingresar en comillas
 #Salida : Cantidad de alumnos por el ramo "X" que se esta ingresando
 def contador_dealumnosporramo(x):
     #Apertura del archivo
-    listaAlumnos = open("Alumnos.txt")
+    listaAlumnos = open(AAlumnos)
     #se divide las lineas del texto en partes de una lista
     lineasdealumnos= listaAlumnos.readlines()
     ####contador ramos####
@@ -38,7 +39,7 @@ def contador_dealumnosporramo(x):
     return contador
 #print contador_dealumnosporramo(Archivo)
 
-#Funcion contador de elementos en una lista de otra lista **se utilizara para la funcion siguiente**
+#Funcion contador de elementos en una lista de otra lista
 #Entrada : Elemento a contar, lista a recoorrer
 #Salida : Las repeticiones del elemento en la lista
 def contadorespecial(elemento,listarecorrer):
@@ -47,7 +48,7 @@ def contadorespecial(elemento,listarecorrer):
         cont = listarecorrer.count(elemento)
         c =c+1
     return cont
-#print contadorespecial(P[i],Lista)
+#print contadorespecial(P[i],Lista),**se utilizara para la funcion siguiente**
 
 #Funcion que entrega los ramos ordenados por demanda
 #Entrada : Archivo de alumnos y ramos "Alumnos.txt" ingresarlo por el nombre
@@ -111,8 +112,9 @@ def ramos_ordenadospordemanda(x):
     return Listawena
 #print ramos_ordenadospordemanda("Alumnos.txt")
 
-
-                #### FUNCIONES SALAS ####
+###############################################################################
+#### FUNCIONES SALAS ####
+###############################################################################
 
 #Funcion lista con bloques disponibles
 #Entrada : Archivo salas
@@ -153,7 +155,7 @@ def contadorhorarios(Lista):
 
 #Funcion : crea el largo de la lista
 #Entrada: archivosalas, cantidad de salas
-#Salida: lista  apiladas donde indice = sala , lista dentro de lista = bloque disponible
+#Salida:lista apiladas donde indice=sala,lista dentro de lista=bloque disponible
 def creacionlistaconbloquesdia(archivo,cantidadesalas) :
         matriz = []
         for i in range(cantidadesalas):
@@ -174,7 +176,9 @@ def creacionlistaconbloquesdia(archivo,cantidadesalas) :
         return matriz
 ####
 
-                ##### FUNCIONES VARIAS #####
+###############################################################################
+##### FUNCIONES VARIAS #####
+###############################################################################
 
 #Funcion verifica que exista demanda de ramos
 #Entrada: lista con alumnos
@@ -230,11 +234,64 @@ def introducirramos(LHS,Alumnos):
             elif c == "No hay mas bloques disponibles ":
                 break
             else:
+                L= Alumnos[0]
+                J = []
+                m = 0
+                while m < len(L):
+                    v = (float(Alumnos[0][m])/cantalumnos)+(float(Alumnos[0][m])/demanda(Alumnos))+(float(horarioslibres(ListaHorario))/contador)
+                    J.append(v)
+                    m = m +1
+
+                c = escojeelmaximo(J)
+                LHS[i][a] = Alumnos[1][c]
+                H = tiposderamos("Restriccion.txt")
+                p = 0
+## RESTRICCION#################################################################
+## RESTRICCION#################################################################
+                if a != 0:
+                    while p < len(H):
+                        if LHS[i][a] and LHS[i][a-1] in H[p]:
+                            c = escojeelsegundo(J)
+                            p = len(H)+1
+                        p = p+1
                 LHS[i][a] = Alumnos[1][c]
                 Alumnos[0][c]=Alumnos[0][c]-1
             a = a + 1
         i = i + 1
     return LHS
+####LHS=lista horario salas , Alumnos=lista con los ramos y bloques que necesita
+
+#FUNCIONES
+#Entrada
+#Salida
+def escojeelsegundo(J):
+    b= sorted(J)
+    c = b[len(b)-2]
+    a = J.index(c)
+
+    return a
+
+#Funcion extrae los tipos de ramos
+#Entrada:archivo con los tipos de ramos
+#Salida:lista con cada sub indice con tipo de ramo
+def tiposderamos(archivo):
+    lista = open("Restriccion.txt")
+    lineastipo= lista.readlines()
+    #lista vacia para introducir todos los ramos del archivo en ella
+    listatipo = []
+    #contador sublista
+    a = 0
+    #Establecer una lista con solo los ramos
+    while a < len(lineastipo):
+        # Apartamos la linea  en la cuan habra solo un alumno
+        tipoparticular = lineastipo[a]
+        # Declaramos una lista con la separacion de ","
+        tiparticular = tipoparticular.split(",")
+        tiparticular.pop(0)
+        tiparticular.pop(-1)
+        listatipo.append(tiparticular)
+        a =a+1
+    return listatipo
 ####
 
 #Funcion entrega lista con ganancia de cada ramo
@@ -252,15 +309,11 @@ def ganancia(Alumnos):
             w= "No hay mas alumnos por asignar"
             m = m+1
         else:
-            while m < len(L):
-                a = (float(Alumnos[0][m])/cantalumnos)+(float(Alumnos[0][m])/demanda(Alumnos))+(float(horarioslibres(ListaHorario))/contador)
-                J.append(a)
-                m = m +1
-            w = escojeelmaximo(J)
+            w = "Go"
     else :
         w = "No hay mas alumnos por asignar"
     return w
-####
+#### Alumnos=lista con los ramos y bloques que necesita
 
 #Funcion escoje el maximo
 #Entrada: lista con ganancias
@@ -269,7 +322,7 @@ def escojeelmaximo(J):
     b= max(J)
     a = J.index(b)
     return a
-####
+#### J = lista con las ganancias de cada ramo
 
 #Funcion que calcula los alumnos que sobran
 #Entrada Lista con bloques de ramos
@@ -280,17 +333,22 @@ def alumnosquesobran(Alummanejable):
             Alummanejable[0][cont] = round((Alummanejable[0][cont])*AlporSalas)
             cont = cont + 1
     return Alummanejable
-####
+#### Alummanejable = lista con los bloques sobrantes
 
-    ##############  BLOQUE PRINCIPAL ##############
-    ##############  BLOQUE PRINCIPAL ##############
+###############################################################################
+            ##############  BLOQUE PRINCIPAL ##############
+            ##############  BLOQUE PRINCIPAL ##############
+###############################################################################
 
+
+print "El Nombre del predefinido para el archivo Alumnos es : ( Alumnos )  "
+print "El Nombre del predefinido para el archivo Salas es : ( Salas ) "
+print tiposderamos("Restriccion.txt")
 #Alumnos
 #Se solicita el nombre de los Archivos
-#AAlumnos = raw_input("Ingrese el nombre del archivo Alumnos : ") + ".txt"
-#ASalas = raw_input("Ingrese el nombre del Archivo Salas: ") + ".txt"
-AAlumnos = "Alumnos.txt"
-ASalas = "Salas.txt"
+AAlumnos = raw_input("Ingrese el nombre del archivo Alumnos : ") + ".txt"
+ASalas = raw_input("Ingrese el nombre del Archivo Salas: ") + ".txt"
+
 ##Alumnos
 #Se abre el archivo Alumnos
 listaAlumnos = open(AAlumnos)
@@ -312,8 +370,9 @@ print "\n","La cantidad de horarios disponibles es", contador,"\n"
 ## Alumnos por sala
 AlporSalas= input("Digite la cantidad de alumnos que cupen en una sala : ")
 
-                    ###### HEURISTICA con optimizacion ######
-
+###############################################################################
+                ###### HEURISTICA con optimizacion ######
+###############################################################################
                         ### ENTRADAS ###
 ## Alumnos
 Alumnos = ramos_ordenadospordemanda(AAlumnos)
@@ -353,8 +412,10 @@ L4 = ListaHorario
 L5 = ListaHorario
 L6 = ListaHorario
 L7 = ListaHorario
-
-## Se introducen ramos dependiendo de la cantidad de dias que hay disponibles en la universidad##
+###############################################################################
+## Se introducen ramos dependiendo de la cantidad de dias que se seleccione ##
+## Se ejecuta la funcion que introduce los ramos y luego se entrega al usuario##
+###############################################################################
 if cantidadedias == 1:
     L1 = introducirramos(L1,olumnos)
     print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
@@ -443,4 +504,4 @@ elif cantidadedias == 7:
 elif cantidadedias <0 or cantidadedias > 7 or cantidadedias != int :
     print "Abra Nuevamente el programa entregando la informacion correctamente"
 
-print "Si los valores son negativos es porque sobran x asientos en la asignatura
+print "Si los valores son negativos es porque sobran x asientos en la asignatura "

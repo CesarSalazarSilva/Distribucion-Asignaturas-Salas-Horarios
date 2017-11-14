@@ -1,6 +1,6 @@
 # -*- coding: cp1252 -*-
 # Distribucion de Horarios y Salas segun Demanda
-#(Cesar Salazar - Benjamin Alcarruz- Penaa, 0.1, 11-11-2017)
+#(Cesar Salazar - Benjamin Alcarruz- Penaa, 17.1114, 11-11-2017)
 
                 ######      DEFINICION DE FUNCIONES      ######
                 ######      DEFINICION DE FUNCIONES      ######

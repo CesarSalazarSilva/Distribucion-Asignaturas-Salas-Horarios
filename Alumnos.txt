@@ -1,120 +1,173 @@
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
-cesarsalazar, calculo, fisica, algebra,
-benjaminAlcarruz, algebra, electromagnetismo,
-ianPorton, fisica, espanol, ingles,
-javi, calculo, fisica, ingles,
-camilo, fisica, algebra, ingles,
-dani, calculo, fisica, algebra,
-javi, fisica, algebra, calculo,
-papa, fisica, calculo,
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra
+smith,calculo,fisica,algebra
+benjaminAlcarruz,algebra,electro
+ianPorton,fisica, progra,ingles
+javi,electro,fisica, ingles,progra
+camilo,espanol,algebra,ingles
+dani,calculo,fisica,algebra
+clever,fisica,sistemas,calculo
+papa,basededatos,calculo,progra

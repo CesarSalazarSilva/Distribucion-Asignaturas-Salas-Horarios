@@ -395,7 +395,7 @@ olumnos = Alumnos
 ## Se procesa los alumnos que requiere cada ramo a bloques de horario que requiere cada ramo
 cont = 0
 while cont <len(olumnos[0]):
-    olumnos[0][cont] = float(Alumnos[0][cont]) /AlporSalas
+    olumnos[0][cont] = round(float(Alumnos[0][cont]) /AlporSalas,2)
     cont = cont + 1
 
 print "Los ramos que existen en la universidad, acompanado de los bloques que necesitan : ", "\n",olumnos, "\n"

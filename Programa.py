@@ -259,8 +259,9 @@ def introducirramos(LHS,Alumnos):
                         if LHS[i][a] and LHS[i][a-1] in H[p]:
                             k = 0
                             while k<len(H[p]):
-                                t = Alumnos[1].index(H[p][k])
-                                J[t]=0
+                                if H[p][k] in Alumnos[1]:
+                                    t = Alumnos[1].index(H[p][k])
+                                    J[t]=0
                                 k = k+1
                         p = p+1
                 c = escojeelmaximo(J)

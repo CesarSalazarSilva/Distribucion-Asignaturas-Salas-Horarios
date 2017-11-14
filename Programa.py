@@ -427,6 +427,7 @@ print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
 L7 = introducirramos(L7,olumnos)
 print "\n","El Horario del dia Domingo para las salas es : ", "\n",L7,"\n"
 #Alumnos que sobran
-print alumnosquesobran(olumnos)
+print "\n","Los Alumnos que faltan por asignar en cada asignatura son : "
+print "\n", alumnosquesobran(olumnos),"\n"
 
-print "Considerar : Si los valores son negativos es porque sobran x asientos en la asignatura "
+print "\n", "Considerar : Si los valores son negativos es porque sobran x asientos en la asignatura "

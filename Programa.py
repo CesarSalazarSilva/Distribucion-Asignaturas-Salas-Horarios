@@ -191,6 +191,7 @@ def demanda(Alumnos):
         if a > 0 :
             B =B+a
         p=p+1
+
     return B
 ####
 
@@ -230,10 +231,16 @@ def introducirramos(LHS,Alumnos):
         while a < len(LHS[i]):
             c = ganancia(Alumnos)
             if c == "No hay mas alumnos por asignar":
-                LHS[i][a] = "Bloquevacio"
+                LHS[i][a] = "--"
             elif c == "No hay mas bloques disponibles ":
                 break
             else:
+                o = 0
+                while o < len(Alumnos[0]):
+                    if Alumnos[0][o]<-0.5 :
+                        Alumnos[0][o] = 0
+                    o = o+1
+
                 #Aplicacion de la restriccion
                 L= Alumnos[0]
                 J = []
@@ -383,7 +390,7 @@ ListaHorario = creacionlistaconbloquesdia(ASalas,Salasdisponibles)
 
 
                         ### PROCESAMIENTO ###
-
+print "Los ramos que existen en la universidad, acompanado de su cantidad de alumnos : ", "\n",Alumnos, "\n"
 olumnos = Alumnos
 ## Se procesa los alumnos que requiere cada ramo a bloques de horario que requiere cada ramo
 cont = 0
@@ -392,7 +399,6 @@ while cont <len(olumnos[0]):
     cont = cont + 1
 
 print "Los ramos que existen en la universidad, acompanado de los bloques que necesitan : ", "\n",olumnos, "\n"
-print "Los ramos que existen en la universidad, acompanado de su cantidad de alumnos : ", "\n",Alumnos, "\n"
 #Creamos listas segun los dias de funcionamiento de la Universidad
 L1 = ListaHorario
 L2 = ListaHorario
@@ -423,4 +429,3 @@ print "\n","El Horario del dia Domingo para las salas es : ", "\n",L7,"\n"
 print alumnosquesobran(olumnos)
 
 print "Considerar : Si los valores son negativos es porque sobran x asientos en la asignatura "
-

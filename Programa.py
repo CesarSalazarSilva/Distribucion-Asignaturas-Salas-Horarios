@@ -234,6 +234,7 @@ def introducirramos(LHS,Alumnos):
             elif c == "No hay mas bloques disponibles ":
                 break
             else:
+                #Aplicacion de la restriccion
                 L= Alumnos[0]
                 J = []
                 m = 0
@@ -246,14 +247,16 @@ def introducirramos(LHS,Alumnos):
                 LHS[i][a] = Alumnos[1][c]
                 H = tiposderamos("Restriccion.txt")
                 p = 0
-## RESTRICCION#################################################################
-## RESTRICCION#################################################################
-                if a != 0:
-                    while p < len(H):
+                if a!= 0:
+                    while p<len(H):
                         if LHS[i][a] and LHS[i][a-1] in H[p]:
-                            c = escojeelsegundo(J)
-                            p = len(H)+1
+                            k = 0
+                            while k<len(H[p]):
+                                t = Alumnos[1].index(H[p][k])
+                                J[t]=0
+                                k = k+1
                         p = p+1
+                c = escojeelmaximo(J)
                 LHS[i][a] = Alumnos[1][c]
                 Alumnos[0][c]=Alumnos[0][c]-1
             a = a + 1
@@ -261,18 +264,16 @@ def introducirramos(LHS,Alumnos):
     return LHS
 ####LHS=lista horario salas , Alumnos=lista con los ramos y bloques que necesita
 
-#FUNCIONES
-#Entrada
-#Salida
-def escojeelsegundo(J):
-    b= sorted(J)
-    c = b[len(b)-2]
-    a = J.index(c)
-
+#Funcion escoje el maximo
+#Entrada: lista con ganancias
+#Salida: indice del dato mas grande
+def escojeelmaximo(J):
+    b= max(J)
+    a = J.index(b)
     return a
 
 #Funcion extrae los tipos de ramos
-#Entrada:archivo con los tipos de ramos
+#Entrada:archivo con lo#s tipos de ramos
 #Salida:lista con cada sub indice con tipo de ramo
 def tiposderamos(archivo):
     lista = open("Restriccion.txt")
@@ -315,14 +316,6 @@ def ganancia(Alumnos):
     return w
 #### Alumnos=lista con los ramos y bloques que necesita
 
-#Funcion escoje el maximo
-#Entrada: lista con ganancias
-#Salida: indice del dato mas grande
-def escojeelmaximo(J):
-    b= max(J)
-    a = J.index(b)
-    return a
-#### J = lista con las ganancias de cada ramo
 
 #Funcion que calcula los alumnos que sobran
 #Entrada Lista con bloques de ramos
@@ -376,7 +369,6 @@ AlporSalas= input("Digite la cantidad de alumnos que cupen en una sala : ")
                         ### ENTRADAS ###
 ## Alumnos
 Alumnos = ramos_ordenadospordemanda(AAlumnos)
-print "Los ramos que existen en la universidad, acompanado de su cantidad de alumnos : ", "\n",Alumnos, "\n"
 
 ## Salas
 #Crear lista de Horario por un dia
@@ -386,10 +378,7 @@ lineadesalas= listasala.readlines()
 Salasdisponibles = len(lineadesalas)
 
 ##HORARIO
-#Como este horario se repite lunes, martes, miercoles, jueves, viernes, etc
-#pedimos al usuario la cantidad de dias que el quiere utilizarlo para
-#distribuir en esta lista los ramos
-cantidadedias = input("Ingrese la cantidad de dias en la semana que abre la Universidad : ")
+#Se entrega un horario semanal para la universidad
 ListaHorario = creacionlistaconbloquesdia(ASalas,Salasdisponibles)
 
 
@@ -403,7 +392,7 @@ while cont <len(olumnos[0]):
     cont = cont + 1
 
 print "Los ramos que existen en la universidad, acompanado de los bloques que necesitan : ", "\n",olumnos, "\n"
-
+print "Los ramos que existen en la universidad, acompanado de su cantidad de alumnos : ", "\n",Alumnos, "\n"
 #Creamos listas segun los dias de funcionamiento de la Universidad
 L1 = ListaHorario
 L2 = ListaHorario
@@ -416,92 +405,22 @@ L7 = ListaHorario
 ## Se introducen ramos dependiendo de la cantidad de dias que se seleccione ##
 ## Se ejecuta la funcion que introduce los ramos y luego se entrega al usuario##
 ###############################################################################
-if cantidadedias == 1:
-    L1 = introducirramos(L1,olumnos)
-    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
-    #Alumnos que sobran
-    print alumnosquesobran(olumnos)
+L1 = introducirramos(L1,olumnos)
+print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
+L2 = introducirramos(L2,olumnos)
+print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
+L3 = introducirramos(L3,olumnos)
+print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
+L4 = introducirramos(L4,olumnos)
+print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
+L5 = introducirramos(L5,olumnos)
+print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
+L6 = introducirramos(L6,olumnos)
+print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
+L7 = introducirramos(L7,olumnos)
+print "\n","El Horario del dia Domingo para las salas es : ", "\n",L7,"\n"
+#Alumnos que sobran
+print alumnosquesobran(olumnos)
 
-elif cantidadedias == 2:
-    L1 = introducirramos(L1,olumnos)
-    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
-    L2 = introducirramos(L2,olumnos)
-    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
-    #Alumnos que sobran
-    print alumnosquesobran(olumnos)
+print "Considerar : Si los valores son negativos es porque sobran x asientos en la asignatura "
 
-elif cantidadedias == 3:
-    L1 = introducirramos(L1,olumnos)
-    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
-    L2 = introducirramos(L2,olumnos)
-    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
-    L3 = introducirramos(L3,olumnos)
-    print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
-    #Alumnos que sobran
-    print alumnosquesobran(olumnos)
-
-elif cantidadedias == 4:
-    L1 = introducirramos(L1,olumnos)
-    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
-    L2 = introducirramos(L2,olumnos)
-    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
-    L3 = introducirramos(L3,olumnos)
-    print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
-    L4 = introducirramos(L4,olumnos)
-    print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
-    #Alumnos que sobran
-    print alumnosquesobran(olumnos)
-
-elif cantidadedias == 5:
-    L1 = introducirramos(L1,olumnos)
-    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
-    L2 = introducirramos(L2,olumnos)
-    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
-    L3 = introducirramos(L3,olumnos)
-    print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
-    L4 = introducirramos(L4,olumnos)
-    print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
-    L5 = introducirramos(L5,olumnos)
-    print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
-    #Alumnos que sobran
-    print alumnosquesobran(olumnos)
-
-elif cantidadedias == 6:
-    L1 = introducirramos(L1,olumnos)
-    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
-    L2 = introducirramos(L2,olumnos)
-    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
-    L3 = introducirramos(L3,olumnos)
-    print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
-    L4 = introducirramos(L4,olumnos)
-    print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
-    L5 = introducirramos(L5,olumnos)
-    print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
-    L6 = introducirramos(L6,olumnos)
-    print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
-    #Alumnos que sobran
-    print alumnosquesobran(olumnos)
-
-
-elif cantidadedias == 7:
-    L1 = introducirramos(L1,olumnos)
-    print "\n","El Horario del dia lunes para las salas es : ", "\n",L1,"\n"
-    L2 = introducirramos(L2,olumnos)
-    print "\n","El Horario del dia Martes para las salas es : ", "\n",L2,"\n"
-    L3 = introducirramos(L3,olumnos)
-    print "\n","El Horario del dia Miercoles para las salas es : ", "\n",L3,"\n"
-    L4 = introducirramos(L4,olumnos)
-    print "\n","El Horario del dia Jueves para las salas es : ", "\n",L4,"\n"
-    L5 = introducirramos(L5,olumnos)
-    print "\n","El Horario del dia Viernes para las salas es : ", "\n",L5,"\n"
-    L6 = introducirramos(L6,olumnos)
-    print "\n","El Horario del dia Sabado para las salas es : ", "\n",L6,"\n"
-    L7 = introducirramos(L7,olumnos)
-    print "\n","El Horario del dia Domingo para las salas es : ", "\n",L7,"\n"
-    #Alumnos que sobran
-    print alumnosquesobran(olumnos)
-
-elif cantidadedias <0 or cantidadedias > 7 or cantidadedias != int :
-    print "Abra Nuevamente el programa entregando la informacion correctamente"
-
-print "Si los valores son negativos es porque sobran x asientos en la asignatura "

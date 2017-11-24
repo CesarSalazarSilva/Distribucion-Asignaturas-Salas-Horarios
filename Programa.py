@@ -245,7 +245,6 @@ def introducirramos(LHS, Alumnos):
                     if Alumnos[0][o] < -1:
                         Alumnos[0][o] = 0
                     o = o + 1
-
                 # Aplicacion de la restriccion
                 L = Alumnos[0]
                 J = []
@@ -255,34 +254,31 @@ def introducirramos(LHS, Alumnos):
                     float(horarioslibres(ListaHorario)) / contador)
                     J.append(v)
                     m = m + 1
-
+                Q=J
+                for posicion in J:
+                    if posicion == (float(horarioslibres(ListaHorario)) / contador):
+                        l= J.index(posicion)
+                        J[l]= 0
                 c = escojeelmaximo(J)
-
                 LHS[i][a] = Alumnos[1][c]
                 #contiene lista con restricciones
                 H = tiposderamos("Restriccion.txt")
-
                 p = 0
-
                 while p < len(H):
                     if LHS[i][a] in H[p]:
-
                         if LHS[i][a - 1] in H[p]:
-
-
                             for elemento in H[p]:
                                 if elemento in Alumnos[1]:
                                     t= Alumnos[1]
                                     r= t.index(elemento)
-                                    J[r]= 0
-
-
+                                    Q[r]= 0
                     p = p + 1
-
-                g = escojeelmaximo(J)
-
-                LHS[i][a] = Alumnos[1][g]
-                Alumnos[0][g] = Alumnos[0][g] - 1
+                c = escojeelmaximo(Q)
+                op = Q.count(0)
+                if op == len(Q):
+                    c=escojeelmaximo(J)
+                LHS[i][a] = Alumnos[1][c]
+                Alumnos[0][c] = Alumnos[0][c] - 1
             a = a + 1
         i = i + 1
     return LHS

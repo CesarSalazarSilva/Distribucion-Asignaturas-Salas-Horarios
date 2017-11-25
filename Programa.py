@@ -152,9 +152,9 @@ def contadorhorarios(Lista):
     return cantidadHorarios
 ####
 
-#Funcion 
-#Entrada
-#Salida
+#Funcion: nombre de salas
+#Entrada: lista con los horarios
+#Salida: lista con el nombre de cada sala formato [[sala101],[sala102]...]
 def listadehorarios2(x):
     #Se abre el archivo donde se encuentran las salas con sus horarios
     listaSalas=[]
@@ -163,9 +163,9 @@ def listadehorarios2(x):
     for horarios in Archivo:
         #generamos una lista separadas por las "," y eliminamos los saltos de linea del archivo
         lista=horarios.strip("\n").split(",")
-        #iniciamos un contador en la lista creada
+        #iniciamos una variable para que tome la posicion 0 en la lista donde se encuentra el nombre
         i=0
-       #aÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±adimos a la listaSalas los bloques de horarios disponibles
+       # se podria dejar el valor de 0 pero por posibles modificaciones se deja asi
         listaSalas.append([lista[i]])       
     #cerramos el archivo 
     Archivo.close()

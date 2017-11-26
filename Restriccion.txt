@@ -1,4 +1,4 @@
-Matematico, algebra, calculo,
-ciencias, fisica, electro,
-Humanista, ingles, espanol,
-Informatico, progra, sistemas, basededatos,
+Matematico,algebra,calculo,
+ciencias,fisica,electro,
+Humanista,ingles,espanol,
+Informatico,progra,sistemas,basededatos,

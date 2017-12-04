@@ -1,6 +1,6 @@
 # -*- coding: cp1252 -*-
-# Distribución de Horarios y Salas Segun Demanda
-# (Cesar Salazar - Benjamin Alcarruz - Cristian Campos - Jose Peña- Jose Ortega, 17.1114, 11-11-2017)
+# Distribucion de Horarios y Salas Segun Demanda
+# (Cesar Salazar - Benjamin Alcarruz - Cristian Campos - Jose PeÃ±a- Jose Ortega, 17.1114, 11-11-2017)
 
 ######      DEFINICION DE FUNCIONES      ######
 ######      DEFINICION DE FUNCIONES      ######
@@ -69,7 +69,7 @@ def ramos_ordenadospordemanda(x):
         # Apartamos la linea  en la cuan habra solo un alumno
         alumnoparticular = lineasdealumnos[a]
         # Declaramos una lista con la separacion de ","
-        lalumnopar = alumnoparticular.split(",")
+        lalumnopar = alumnoparticular.strip(" ").split(",")
         # Contador que parte del primer ramo
         b = 1
         while b < (len(lalumnopar) - 1):
@@ -88,7 +88,7 @@ def ramos_ordenadospordemanda(x):
         repeticionderamo = contadorespecial(Ramos[s], listaderamosgrande)
         l.append(repeticionderamo)
         s = s + 1
-    # en una lista ponemos el ramo acompaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±ado de su cantidad de alumnos en un
+    # en una lista ponemos el ramo acompanado de su cantidad de alumnos en un
     # sub indice de la lista
     lblanco = []
     m = 0
@@ -125,12 +125,12 @@ def listadehorarios(x):
     # iteramos para leer las lineas del archivo
     for horarios in Archivo:
         # generamos una lista separadas por las "," y eliminamos los saltos de linea del archivo
-        lista = horarios.strip("\n").split(",")
+        lista = horarios.strip("\n").strip(" ").split(",")
         # iniciamos un contador en la lista creada
         i = 1
         # iniciamos un iterador desde la posicion 1 donde se encuentran los horarios disponibles
         while i < len(lista):
-            # aÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±adimos a la listaSalas los bloques de horarios disponibles
+            # anadimos a la listaSalas los bloques de horarios disponibles
             listaSalas.append([lista[i]])
             i += 1
     # cerramos el archivo
@@ -162,7 +162,7 @@ def listadehorarios2(x):
     #iteramos para leer las lineas del archivo
     for horarios in Archivo:
         #generamos una lista separadas por las "," y eliminamos los saltos de linea del archivo
-        lista=horarios.strip("\n").split(",")
+        lista=horarios.strip("\n").strip(" ").split(",")
         #iniciamos una variable para que tome la posicion 0 en la lista donde se encuentra el nombre
         i=0
        # se podria dejar el valor de 0 pero por posibles modificaciones se deja asi
@@ -201,7 +201,7 @@ def creacionlistaconbloquesdia(archivo, cantidadesalas):
 # Entrada: Lista con alumnos.
 # Salida: Cantidad de bloques que se necesitan de ramos sin asignar.
 def bloquesquenecesita(Alumnos):
-    #Contador de la iteración
+    #Contador de la iteraciÃ³n
     p = 0
     #contador de bloques sin asignar
     B = 0
@@ -260,46 +260,53 @@ def introducirramos(LHS, Alumnos):
     while i < len(LHS):
         a = 0
         while a < len(LHS[i]):
-            # El indice c es el que vamos a integrar en la ista de horario
+            # El indice c es el ramo a asignar de la ista de horario
             c = corroborar(Alumnos)
             # Verificamos que el indice de alumnos que vamos a poner no sea 0
+            # Si es asi no quedan mas alumnos por asignar por lo tanto se introduce el caracter --
             if c == "No hay mas alumnos por asignar":
                 LHS[i][a] = "--"
             # Verificamos que queden bloques disponibles
-            # Si no es asi rompemos el ciclo
+            # Si no es asi rompemos el ciclo dado que no hay mas bloques disponibles para asignar
             elif c == "No hay mas bloques disponibles ":
                 break
-            # Si esta disponible para utilizar
+            # Si hay bloques disponibles y hay alumnos por asignar se prosigue a introducir
             elif c == "Go":
-
+                #controlador iteracion para cada ramo
                 o = 0
-                #Si hay un indice negativo en la solicitud de bloques se iguala a 0
+                #Si hay un indice negativo en la solicitud de bloques se iguala a 0 para cada ramo
                 while o < len(Alumnos[0]):
                     if Alumnos[0][o] < -1:
                         Alumnos[0][o] = 0
                     o = o + 1
-
                 # Aplicacion de la ganancia para elegir
                 L = Alumnos[0]
+                #lista vacia para introducir ganancia de cada ramo y asi ubicar el de mayor ganancia
                 J = []
+                #controlador iteracion
                 m = 0
                 while m < len(L):
                     # Agregamos una ganancia a cada ramo para saber cual escojer a j una lista vacia
+                    # Aplicacion de Ganancia con la formula de alpha, beta y gama
+                    #Esto es solo Formula
                     v = (float(Alumnos[0][m]) / cantalumnos) + (float(Alumnos[0][m]) / bloquesquenecesita(Alumnos)) + (
                     float(horarioslibres(ListaHorario)) / contador)
+                    #Agregamos esa ganancia 
                     J.append(v)
                     m = m + 1
 
-                # Creamos una lista que imite a j que es donde se ubica la ganancia
+                # Creamos una lista igual a j donde se encuentra la ganancia de cada ramo
+                # Para tener una comparacion en caso de excepcion, como por ejemplo que haya un ramo del mismo tipo asignado uno despues de otro
                 Q=J
 
-                # Por cada posicion en demanda si la ganancia es la cte entonces se iguala a 0
+                # Por cada posicion en la demanda, si la ganancia es minima entonces la igualamos a 0 dado que es despreciable
+                # Este valor float(horarioslibres(ListaHorario)) / contador) es el cte
                 for posicion in J:
                     if posicion == (float(horarioslibres(ListaHorario)) / contador):
                         l= J.index(posicion)
                         J[l]= 0
 
-                # Se escoje el maximo de la ganancia y se entrega el indice del ramo con mas ganancia
+                # Se escoje el maximo de la ganancia y se entrega el ramo con mayor ganancia
                 c = escojeelmaximo(J)
 
                 # Se pone en la posicion y se verifica para aplicar la restriccion

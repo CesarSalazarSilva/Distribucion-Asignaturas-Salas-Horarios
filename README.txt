@@ -11,7 +11,7 @@ Estimado usuario  para una optima funcionalidad del software que esta manejando,
         RamonUlloa,electomagnetismo,espanol,ingles,
         MaritzaCuello,progra,sistema,quimica,
         
-  - Archivo de Salas:
+  2- Archivo de Salas:
         Debe contener en su interior en una linea separados por comas (",") el nombre de la sala seguido con sus bloques
         disponibles de Horarios; de la siguiente Forma:
         
@@ -23,7 +23,7 @@ Estimado usuario  para una optima funcionalidad del software que esta manejando,
         sala106,8:00-9:20,9:30-11:10,11:20-12:50,13:50-15:20,15:30-17:00,17:10-18:40,19:00-20:30
 
         
-  - Archivo de Restriccion:
+  3- Archivo de Restriccion:
         Debe contener en su interior en una linea separados por comas (",") el nombre del tipo de ramo seguido con los ramos
         de esa categoria ; de la siguiente forma:
         

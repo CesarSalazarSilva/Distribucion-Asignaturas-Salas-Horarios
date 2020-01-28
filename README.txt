@@ -1,8 +1,8 @@
 # Proyecto-Master
 Proyecto de Distribucion de Salas y Horarios
 
-Estimado usuario  para una optima funcionalidad del software que esta manejando, se le solicita entregar een forma de archivo formato txt
-3 archivos :
+Estimado usuario para la optima funcionalidad del software que está por manejar, se le solicita entregar en forma de archivo formato .txt
+los siguientes 3 archivos :
   1 - Archivo de Alumnos:
         Debe contener en su interior en una linea separados por comas (",") el nombre del alumno con sus ramos escogidos
         sin tildes o ñ ; de la siguiente forma : 
@@ -20,7 +20,7 @@ Estimado usuario  para una optima funcionalidad del software que esta manejando,
         sala103,8:00-9:20,9:30-11:10,11:20-12:50,13:50-15:20,15:30-17:00,17:10-18:40,
         sala104,8:00-9:20,9:30-11:10,11:20-12:50,13:50-15:20,15:30-17:00,17:10-18:40,19:00-20:30,
         sala105,8:00-9:20,9:30-11:10,11:20-12:50,13:50-15:20,15:30-17:00,
-        sala106,8:00-9:20,9:30-11:10,11:20-12:50,13:50-15:20,15:30-17:00,17:10-18:40,19:00-20:30
+        sala106,8:00-9:20,9:30-11:10,11:20-12:50,13:50-15:20,15:30-17:00,17:10-18:40,19:00-20:30,
 
         
   3- Archivo de Restriccion:
